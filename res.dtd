@@ -1,4 +1,5 @@
-<!--  Resolution DTD  17 August 2016  -->
+<!--RES DTD version 23 October 2018  -->
+
 
 
 <!ELEMENT  resolution   (pre-form?, metadata?, form, preamble*, resolution-body, 
@@ -77,6 +78,7 @@ Sponsor-Change)  #REQUIRED
 
              dms-id			  CDATA                          #IMPLIED
              dms-version    CDATA                          #IMPLIED
+             slc-id			  CDATA     						#IMPLIED
 
              public-private
                  (public | private)  #REQUIRED
@@ -102,10 +104,161 @@ Sponsor-Change)  #REQUIRED
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ENTITY %    rules-level-model
                         "rule | rules-clause | rules-paragraph |
                          rules-subparagraph | rules-subdivision |
                          rules-item | rules-subitem">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -132,6 +285,12 @@ Sponsor-Change)  #REQUIRED
             "idref       IDREF                  #IMPLIED" >
 
 
+
+
+
+
+
+
 <!ENTITY % internal-link-attributes
             "%internal-locator.att;"                                 >
 
@@ -151,6 +310,12 @@ Sponsor-Change)  #REQUIRED
             "%optional-locator.att;"                                 >
 
 
+
+
+
+
+
+
 <!ENTITY % refs         "internal-xref | external-xref"                        >
 
 
@@ -158,8 +323,44 @@ Sponsor-Change)  #REQUIRED
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ENTITY % revisions    "added-phrase |
                          deleted-phrase"                       >
+
+
+
 
 
 <!ENTITY % phrase-level  "%revisions; | %refs; | fraction | superscript | subscript | italic | quote | inline-comment | act-name | formula | term | omitted-text | linebreak | nobreak | pagebreak">
@@ -180,6 +381,13 @@ Sponsor-Change)  #REQUIRED
 <!ATTLIST  inline-comment display (yes | no) "yes" >
 
 
+
+
+
+
+
+
+
 <!ENTITY %    nonstructured-level-model
                         "quoted-block | non-statutory-material  |  graphic | legis-comment | formula | toc | table | pagebreak | list">
 
@@ -190,6 +398,14 @@ Sponsor-Change)  #REQUIRED
                         "subsection | paragraph |
                          subparagraph | clause |
                          subclause | item | subitem" >
+
+
+
+
+
+
+
+
 
 
 <!ELEMENT  quote  ( %text-model;)* >
@@ -216,7 +432,63 @@ Sponsor-Change)  #REQUIRED
           parsable-cite		CDATA		#IMPLIED>
 
 
+
+
+
+
+
+
+
 <!ELEMENT   italic (%pcd-model; | fraction | superscript | subscript | quote | inline-comment | external-xref | 	internal-xref | act-name | formula | term | editorial | footnote | footnote-ref )*>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!ENTITY % person-elements  "%pcd-model; | %phrase-level;">
@@ -265,6 +537,45 @@ Sponsor-Change)  #REQUIRED
 
 <!ELEMENT  subheader    (%pcd-model; | enum-in-header | committee-name | %phrase-level; | editorial)*>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ELEMENT  internal-xref (%pcd-model; | fraction | superscript | subscript | quote | inline-comment | act-name | 	formula | term | omitted-text | linebreak | nobreak | pagebreak)*>
 
 
@@ -276,17 +587,81 @@ Sponsor-Change)  #REQUIRED
 
 
 
-<!ELEMENT external-xref  (%pcd-model; | fraction | superscript | subscript | quote | inline-comment | act-name | 	formula | term | omitted-text | linebreak | nobreak | pagebreak)*>
+<!ELEMENT external-xref  (%pcd-model; | fraction | superscript | subscript | quote | inline-comment | act-name | formula | term | omitted-text | linebreak | nobreak | pagebreak)*>
 
 
 
 
 <!ATTLIST  external-xref
-             legal-doc (usc | public-law | statute-at-large | bill | act | executive-order | regulation | senate-rule | treaty-ust | treaty-tias | usc-appendix | usc-act |
-		  usc-chapter | usc-subtitle)	#IMPLIED
+             legal-doc (usc | public-law | statute-at-large | bill | act | executive-order | regulation | senate-rule | house-rule | treaty-ust | treaty-tias | usc-appendix | usc-act | usc-chapter | usc-subtitle)	#IMPLIED
 		  parsable-cite		CDATA			#IMPLIED>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ENTITY % yesorno '(0 | 1)'  >
+
+
+
 
 
 <!ENTITY % titles  'ttitle*, tdesc*'>
@@ -362,6 +737,36 @@ Sponsor-Change)  #REQUIRED
                          | fl-hang-hier-6 | fl-hang-hier-7
                          | fl-hang-hier-8 | fl-hang-hier-9)     #IMPLIED
 	  leader-modify	(force-ldr | clr-ldr | force-ldr-bottom)	#IMPLIED">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -493,6 +898,12 @@ Sponsor-Change)  #REQUIRED
 >
 
 
+
+
+
+
+
+
 <!ELEMENT  graphic      (graphic-caption?, image-data)>
 
 
@@ -522,12 +933,25 @@ Sponsor-Change)  #REQUIRED
  <!ELEMENT  image-data		(#PCDATA)	>
 
 
+
+
+
+
+
+
+
+
+
 <!ELEMENT  superscript  (%pcd-model;)*>
 
 
 
 
 <!ELEMENT  subscript    (%pcd-model;)*>
+
+
+
+
 
 
 
@@ -544,6 +968,11 @@ Sponsor-Change)  #REQUIRED
 		(strikethrough | italic | boldface-roman | boldface-italic | brackets-boldface-roman |
  		brackets-boldface-italic | parentheses-boldface-roman | parentheses-boldface-italic |
  		bold-brackets)            #IMPLIED >
+
+
+
+
+
 
 
 <!ELEMENT  fraction     (%pcd-model;)*>
@@ -584,6 +1013,35 @@ Sponsor-Change)  #REQUIRED
 
 <!NOTATION jpeg         SYSTEM "jpeg">
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ENTITY % term-attributes
             "%internal-link-attributes;">
 
@@ -602,7 +1060,46 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
 
 
 
+
+
+
+
+
 <!ELEMENT  definition (%pcd-model; | %phrase-level;)*>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!ELEMENT  added-phrase  (%text-model;)*>
 
@@ -631,6 +1128,50 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
 		(strikethrough | italic | boldface-roman | boldface-italic | brackets-boldface-roman |
  		brackets-boldface-italic | parentheses-boldface-roman | parentheses-boldface-italic |
  		bold-brackets)            #IMPLIED  >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!ENTITY % legis-structures
@@ -678,6 +1219,19 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
                         header?,
                         toc?), (%approps-block; | section)*">
 
+
+                     
+
+
+
+
+
+
+
+
+
+
+
 <!ENTITY % structure-attributes
 	'%unique-id;
 	changed (added | deleted | not-changed)     #IMPLIED
@@ -718,6 +1272,14 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
 
 <!ENTITY % style-attributes
             "style   (%style-attribute-values;)  'OLC'">
+
+
+
+
+
+
+
+
 
 
 <!ENTITY % section-model
@@ -1041,8 +1603,10 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
                         rules-subparagraph | rules-subdivision |
                         rules-item | rules-subitem) "section"
 			style      (%style-attribute-values; | other) "OLC"
-         	other-style
+         		 other-style
 			(archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED >
+
+
 
 
 
@@ -1089,7 +1653,7 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
 <!ATTLIST  quoted-block
 	style      (%style-attribute-values; | other) "OLC"
 	other-style
-		(archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED
+			(archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED
 	display-inline   (yes-display-inline | no-display-inline) "no-display-inline"
 	changed (added | deleted | not-changed)     #IMPLIED
 	committee-id
@@ -1160,6 +1724,61 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
  		bold-brackets)            #IMPLIED 	
  		commented	(yes | no | hidden) 	"no"   >
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ELEMENT  toc          ((header?, instructive-para?), ((toc-entry |
                         toc-quoted-entry)+ | (multi-column-toc-entry | multi-column-toc-quoted-entry)+))+>
 
@@ -1180,6 +1799,14 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
  		brackets-boldface-italic | parentheses-boldface-roman | parentheses-boldface-italic |
  		bold-brackets)            #IMPLIED
 	%internal-link-attributes-if-needed;	>
+
+
+
+
+
+
+
+
 
 
 <!ELEMENT  instructive-para	(%text-model;)*	>
@@ -1215,7 +1842,8 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
 <!ELEMENT  multi-column-toc-quoted-entry	(multi-column-toc-entry)+  >
 <!ATTLIST  multi-column-toc-quoted-entry
             style      (%style-attribute-values; | other) "OLC"
-            other-style (archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED >
+            other-style
+			(archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED >
 
 <!ELEMENT  toc-entry    (%pcd-model; | enum-in-header | %phrase-level;)*>
 
@@ -1236,7 +1864,14 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
 <!ELEMENT  toc-quoted-entry  (toc-entry+)>
 <!ATTLIST  toc-quoted-entry
 	    style      (%style-attribute-values; | other) "OLC"
-	    other-style (archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED >
+	    other-style
+			(archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED >
+
+
+
+
+
+
 
 
 <!ELEMENT  omitted-text  EMPTY>
@@ -1246,6 +1881,28 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
 <!ATTLIST  omitted-text
              type    (horizontal |
                         vertical)  #REQUIRED>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!ENTITY %    rules-level-model
@@ -1322,6 +1979,60 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
 <!ELEMENT  rules-subitem     (enum, (text | continuation-text | %legis-structures; | legis-comment)+)   >
 <!ATTLIST  rules-subitem     %rules-structure-attributes;
 				%display-inline-model;>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!ELEMENT  meta-house   (holc-filename?,holc-attorney?,
@@ -1429,7 +2140,7 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
 <!ELEMENT  meta-senate  (slc-for?,slc-subject?,
                         slc-type?, slc-description?,
                         slc-received?, slc-delivered?,
-                        slc-staff?,slc-peer-reviewed-by?)>
+                        slc-staff?,slc-peer-reviewed-by?,slc-previous?,slc-next?)>
 
 
 
@@ -1478,6 +2189,21 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
 
 
 <!ELEMENT  slc-peer-reviewed-by  (#PCDATA)>
+<!ELEMENT  slc-previous  (#PCDATA)>
+<!ELEMENT  slc-next  (#PCDATA)>
+
+
+
+
+
+<!ELEMENT meta-aip (aip:version-number, aip:executed, aip:amendment-doc+)>
+<!ATTLIST meta-aip xmlns:aip CDATA #FIXED "http://xml.house.gov">
+<!ELEMENT aip:version-number (#PCDATA)>
+<!ELEMENT aip:executed (#PCDATA)>
+<!ELEMENT aip:amendment-doc (aip:order-applied, aip:filename)>
+<!ELEMENT aip:order-applied (#PCDATA)>
+<!ELEMENT aip:filename (#PCDATA)>
+<!ATTLIST aip:filename hash CDATA #IMPLIED >
 
 
 
@@ -1486,11 +2212,7 @@ inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omi
 
 
 
-
-
-
-
-<!ENTITY % pre-form-model   "(meta-house | meta-senate)?,
+<!ENTITY % pre-form-model   "(meta-aip | meta-house | meta-senate)*,
                         author-note?,
                         running-header?,
 				suspension-floor-action?,

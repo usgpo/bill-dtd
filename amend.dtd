@@ -1,5 +1,4 @@
-<!--  Amendment DTD 17 August 2016  -->
-
+<!--AMEND DTD version 23 October 2018 -->
 
 <!ENTITY % style-attribute-values
                         "defense |
@@ -24,6 +23,7 @@
           amend-degree (first | second | third | fourth | fifth | sixth)               #IMPLIED
           dms-id         CDATA                      	#IMPLIED
           dms-version    CDATA                          #IMPLIED
+          slc-id			  CDATA     #IMPLIED
           %style-attributes;
           star-print  (first-star-print | second-star-print | third-star-print | fourth-star-print | no-star-print)	"no-star-print"
           public-print     (yes | no)	"no"
@@ -155,6 +155,57 @@
 <!ELEMENT  debate-time  (%pcd-model;)*>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ELEMENT  meta-house   (holc-filename?,holc-attorney?,
 				holc-last-author?,
                         holc-last-saved?, holc-creator?,
@@ -167,16 +218,29 @@
 <!ELEMENT  holc-filename  (%pcd-model;)*>
 
 
+
+
+
+
 <!ELEMENT  holc-attorney  (%pcd-model;)*>
+
+
 
 
 <!ELEMENT  holc-job-number  (%pcd-model;)*>
 
 
+
+
 <!ELEMENT  holc-doc-number  (%pcd-model;)*>
 
 
+
+
+
 <!ELEMENT  holc-last-author  (%pcd-model;)*>
+
+
 
 
 <!ELEMENT  holc-last-saved  (%pcd-model;)*>
@@ -190,10 +254,16 @@
 <!ELEMENT  holc-creation-date  (%pcd-model;)*>
 
 
+
+
 <!ELEMENT  holc-contact  (%pcd-model;)*>
 
 
+
+
 <!ELEMENT  holc-contact-phone  (%pcd-model;)*>
+
+
 
 
 <!ELEMENT  conversion-notes  (noted+)>
@@ -205,6 +275,8 @@
 
 
 
+
+
 <!ELEMENT version (version-filename, version-date, version-creator) >
 
 <!ELEMENT  version-filename (%pcd-model;)*>
@@ -213,10 +285,36 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ELEMENT  meta-senate  (slc-for?,slc-subject?,
                         slc-type?, slc-description?,
                         slc-received?, slc-delivered?,
-                        slc-staff?,slc-peer-reviewed-by?)>
+                        slc-staff?,slc-peer-reviewed-by?,slc-previous?,slc-next?)>
+
+
+
 
 
 
@@ -226,6 +324,8 @@
 <!ELEMENT  slc-for  (slc-for-office?,slc-for-sponsor?,slc-for-staffer?)>
 
 
+
+
 <!ELEMENT  slc-subject-field1  (#PCDATA)>
 <!ELEMENT  slc-subject-field2  (#PCDATA)>
 <!ELEMENT  slc-subject-field3  (#PCDATA)>
@@ -233,23 +333,56 @@
                          slc-subject-field3?)>
 
 
+
+
 <!ELEMENT  slc-type  (#PCDATA)>
+
+
 
 
 <!ELEMENT  slc-description (#PCDATA | %phrase-level;)*>
 
 
+
+
 <!ELEMENT  slc-received  (#PCDATA)>
+
+
 
 
 <!ELEMENT  slc-delivered  (#PCDATA)>
 
+
+
 <!ELEMENT  slc-staff  (#PCDATA)>
 
 
-<!ELEMENT  slc-peer-reviewed-by  (#PCDATA)>
 
-<!ENTITY % pre-form-model   "(meta-house | meta-senate)?,
+<!ELEMENT  slc-peer-reviewed-by  (#PCDATA)>
+<!ELEMENT  slc-previous  (#PCDATA)>
+<!ELEMENT  slc-next  (#PCDATA)>
+
+
+
+
+
+<!ELEMENT meta-aip (aip:version-number, aip:executed, aip:amendment-doc+)>
+<!ATTLIST meta-aip xmlns:aip CDATA #FIXED "http://xml.house.gov">
+<!ELEMENT aip:version-number (#PCDATA)>
+<!ELEMENT aip:executed (#PCDATA)>
+<!ELEMENT aip:amendment-doc (aip:order-applied, aip:filename)>
+<!ELEMENT aip:order-applied (#PCDATA)>
+<!ELEMENT aip:filename (#PCDATA)>
+<!ATTLIST aip:filename hash CDATA #IMPLIED>
+
+
+
+
+
+
+
+
+<!ENTITY % pre-form-model   "(meta-aip | meta-house | meta-senate)*,
                         author-note?,
                         running-header?,
 				suspension-floor-action?,
@@ -265,14 +398,20 @@
 <!ATTLIST  pre-form     display (yes | no)  "yes"                   >
 
 
+
+
 <!ELEMENT  author-note
                             (%pcd-model;)*                              >
 <!ATTLIST  author-note     display (yes | no)  "yes"                >
 
 
+
+
 <!ELEMENT  running-header
                             (%pcd-model;)*                              >
 <!ATTLIST  running-header   display (yes | no)  "yes"               >
+
+
 
 
 <!ELEMENT  reintroduction-code
@@ -295,14 +434,20 @@
 <!ATTLIST  legis-counsel    display (yes | no)  "yes"               >
 
 
+
+
 <!ELEMENT  signature-line
                             (%pcd-model;)*                              >
 <!ATTLIST  signature-line   display (yes | no)  "yes"               >
 
 
+
+
 <!ELEMENT  first-page-header
                             (%pcd-model;)*                              >
 <!ATTLIST  first-page-header   display (yes | no)  "yes"            >
+
+
 
 
 <!ELEMENT  first-page-date
@@ -314,9 +459,14 @@
 <!ATTLIST  first-page-desc  display (yes | no)  "yes"               >
 
 
+
+
+
 <!ELEMENT     metadata           (dublinCore) >
 <!ATTLIST        metadata       xmlns:dc CDATA #FIXED "http://purl.org/dc/elements/1.1/" >
 <!ELEMENT     dublinCore         (dc:title | dc:publisher | dc:date | dc:format | dc:language | dc:rights)* >
+
+
 
 <!ELEMENT dc:title (#PCDATA)>
 <!ATTLIST dc:title xml:lang CDATA #IMPLIED>
@@ -347,6 +497,27 @@
 <!ELEMENT dc:rights (#PCDATA)>
 <!ATTLIST dc:rights xml:lang CDATA #IMPLIED>
 <!ATTLIST dc:rights rdf:resource CDATA #IMPLIED>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!ENTITY %    rules-level-model
@@ -425,6 +596,122 @@
 				%display-inline-model;>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ENTITY % locator.att
             "href       CDATA                 #REQUIRED" >
 
@@ -447,6 +734,12 @@
             "idref       IDREF                  #IMPLIED" >
 
 
+
+
+
+
+
+
 <!ENTITY % internal-link-attributes
             "%internal-locator.att;"                                 >
 
@@ -467,11 +760,48 @@
 
 
 
+
+
+
+
 <!ENTITY % refs         "internal-xref  |  external-xref"                        >
 
 
 
 <!ENTITY % ext-refs     "external-xref"                        >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -481,8 +811,16 @@
 
 
 
+
+
+
+
+
+
 <!ENTITY %    nonstructured-level-model
                         "quoted-block | non-statutory-material  |  graphic | legis-comment | formula | toc | table | pagebreak | list">
+
+
 
 
 
@@ -492,15 +830,25 @@
                          subclause | item | subitem" >
 
 
+
+
+
+
+
+
+
+
 <!ELEMENT  quote  ( %text-model;)* >
 
 <!ELEMENT  editorial (%pcd-model; | %phrase-level; | definition | header-in-text | committee-name | short-title | 	footnote | footnote-ref)*>
+
 
 
 <!ELEMENT  footnote (%pcd-model; | %phrase-level; |  definition | header-in-text | committee-name | short-title | 	editorial | footnote-ref)*>
 
 <!ATTLIST footnote
           id    ID  #REQUIRED>
+
 
 
 
@@ -514,25 +862,95 @@
 
 
 
+
+
+
 <!ELEMENT  inline-comment  ( %text-model; | enum-in-header)* >
 <!ATTLIST  inline-comment display (yes | no) "yes" >
+
+
+
 
 
 <!ELEMENT   italic (%pcd-model; | fraction | superscript | subscript | quote | inline-comment | external-xref | internal-xref | act-name | formula | term | editorial | footnote | footnote-ref )*>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ENTITY % person-elements  "%pcd-model; | %phrase-level;">
+
+
+
+
+
+
 
 <!ENTITY % date-attributes
             "date       CDATA  #IMPLIED
              legis-day  CDATA  #IMPLIED">
 
 
+
+
 <!ENTITY % unique-id
             "id        ID  #REQUIRED">
 
 
+
+
+
+
 <!ELEMENT  enum         (%text-model;)*>
+
+
 
 
 <!ELEMENT  header       (%pcd-model; | enum-in-header | committee-name | %phrase-level; | editorial)*>
@@ -540,12 +958,57 @@
 	display-inline  (yes-display-inline | no-display-inline)  "yes-display-inline"  >
 
 
+
+
+
 <!ELEMENT  enum-in-header  (%text-model;)*>
+
+
+
 
 <!ELEMENT  short-title (%pcd-model; | %phrase-level;)*>
 
 
 <!ELEMENT  subheader    (%pcd-model; | enum-in-header | committee-name | %phrase-level; | editorial)*>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!ELEMENT  internal-xref (%pcd-model; | fraction | superscript | subscript | quote | inline-comment | act-name | 	formula | term | omitted-text | linebreak | nobreak | pagebreak)*>
@@ -558,24 +1021,96 @@
 	      legis-path	CDATA		#IMPLIED>
 
 
-<!ELEMENT external-xref  (%pcd-model; | fraction | superscript | subscript | quote | inline-comment | act-name | 	formula	| term | omitted-text | linebreak | nobreak | pagebreak)*>
+
+
+
+
+
+<!ELEMENT external-xref  (%pcd-model; | fraction | superscript | subscript | quote | inline-comment | act-name | 	formula	| term | omitted-text | linebreak | nobreak | pagebreak | italic)*>
 
 
 
 
 <!ATTLIST  external-xref
-             	legal-doc (usc | public-law | statute-at-large | bill | act | executive-order | regulation |
-             	senate-rule | treaty-ust | treaty-tias | usc-appendix | usc-act |
-		usc-chapter | usc-subtitle)	#IMPLIED
+             	legal-doc (usc | public-law | statute-at-large | bill | act | executive-order | regulation | senate-rule | house-rule | treaty-ust | treaty-tias |
+			 usc-appendix | usc-act | usc-chapter | usc-subtitle)	#IMPLIED
 		parsable-cite		CDATA			#IMPLIED>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ENTITY % yesorno '(0 | 1)'  >
+
+
+
+
 
 <!ENTITY % titles  'ttitle*, tdesc*'>
 
 <!ELEMENT  ttitle       (%pcd-model; | bold | superscript | subscript)*>
 
 <!ELEMENT  tdesc        (%pcd-model; | bold | superscript | subscript)*>
+
+
 
 <!ENTITY % tbl.table.att
 	"pgwide          %yesorno;                              #IMPLIED
@@ -591,6 +1126,8 @@
  		brackets-boldface-italic | parentheses-boldface-roman | parentheses-boldface-italic |
  		bold-brackets)            #IMPLIED
  		table-template-name	CDATA		#IMPLIED"  >
+
+
 
 <!ENTITY % tbl.tgroup.att   "
         bearoff         CDATA                                   #IMPLIED
@@ -618,6 +1155,7 @@
         align-modify-variable  %yesorno;                        #IMPLIED">
 
 
+
 <!ENTITY % tbl.row.att
         "rowsep-modify   (double | bold)                         #IMPLIED">
 
@@ -639,6 +1177,36 @@
                          | fl-hang-hier-6 | fl-hang-hier-7
                          | fl-hang-hier-8 | fl-hang-hier-9)     #IMPLIED
 	  leader-modify	(force-ldr | clr-ldr | force-ldr-bottom)	#IMPLIED">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -687,6 +1255,7 @@
 >
 
 
+
 <!ELEMENT tgroup (%tbl.tgroup.mdl;) >
 
 <!ATTLIST tgroup
@@ -696,6 +1265,8 @@
         align           (left|right|center|justify|char)        #IMPLIED
         %tbl.tgroup.att;
 >
+
+
 
 <!ELEMENT colspec EMPTY >
 
@@ -711,6 +1282,8 @@
         %tbl.colspec.att;
 >
 
+
+
 <!ELEMENT thead (row+)>
 
 <!ATTLIST thead
@@ -724,6 +1297,9 @@
         valign          (top|middle|bottom)                     #IMPLIED
         %tbl.thead.att;
 >
+
+
+
 
 <!ELEMENT tbody (row+)>
 
@@ -743,6 +1319,8 @@
 >
 
 
+
+
 <!ELEMENT entry %tbl.entry.mdl;>
 
 <!ATTLIST entry
@@ -758,6 +1336,12 @@
         valign          (top|middle|bottom)                     #IMPLIED
         %tbl.entry.att;
 >
+
+
+
+
+
+
 
 
 <!ELEMENT  graphic      (graphic-caption?, image-data)>
@@ -789,12 +1373,30 @@
  <!ELEMENT  image-data		(#PCDATA)	>
 
 
+
+
+
+
+
+
+
+
+
 <!ELEMENT  superscript  (%pcd-model;)*>
+
+
 
 
 <!ELEMENT  subscript    (%pcd-model;)*>
 
+
+
+
+
+
+
 <!ELEMENT  formula      (graphic)>
+
 
 
 <!ATTLIST  formula
@@ -807,31 +1409,134 @@
  		brackets-boldface-italic | parentheses-boldface-roman | parentheses-boldface-italic |
  		bold-brackets)            #IMPLIED >
 
+
+
+
+
+
+
 <!ELEMENT  fraction     (%pcd-model;)*>
+
+
+
+
+
 
 <!ELEMENT  linebreak    EMPTY>
 
+
+
+
+
 <!ELEMENT  pagebreak    EMPTY>
+
+
+
+
+
+
 
 <!ELEMENT  nobreak      EMPTY>
 
+
+
+
+
+
+
 <!NOTATION gif          SYSTEM "gif">
+
+
 
 <!NOTATION eps          SYSTEM "eps">
 
 
 <!NOTATION jpeg         SYSTEM "jpeg">
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ENTITY % term-attributes "%internal-link-attributes;">
+
+
 
 <!ENTITY % definition-attributes
             "%unique-id;">
 
 
+
+
+
+
 <!ELEMENT  term (%pcd-model; | %revisions; | %refs; | fraction | superscript | subscript | italic | quote | inline-comment | act-name | formula | editorial | footnote | footnote-ref  | omitted-text | linebreak | nobreak | pagebreak)*>
 
 
+
+
+
+
+
+
+
 <!ELEMENT  definition (%pcd-model; | %phrase-level;)*>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -862,6 +1567,53 @@
 		(strikethrough | italic | boldface-roman | boldface-italic | brackets-boldface-roman |
  		brackets-boldface-italic | parentheses-boldface-roman | parentheses-boldface-italic |
  		bold-brackets)            #IMPLIED  >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!ENTITY % start-of-structure
@@ -895,6 +1647,14 @@
  		brackets-boldface-italic | parentheses-boldface-roman | parentheses-boldface-italic |
  		bold-brackets)            #IMPLIED 	
  		commented	(yes | no | hidden) 	"no">
+
+
+
+
+
+
+
+
 
 
 <!ENTITY % structure-attributes
@@ -932,8 +1692,18 @@
 				order-of-business | concur-with-amendment |
 				constitutional-amendment | impeachment">
 
+
+
+
 <!ENTITY % style-attributes
             "style   (%style-attribute-values;)  'OLC'">
+
+
+
+
+
+
+
 
 
 
@@ -948,6 +1718,8 @@
                         committee-appointment-paragraph* | (%approps-block;)*),continuation-text?">
 
 <!ELEMENT  pl-cite  (%pcd-model;)*>
+
+
 
 
 <!ELEMENT  committee-appointment-paragraph (header?, text) >
@@ -1035,6 +1807,11 @@
                         %display-inline-model;>
 
 
+
+
+
+
+
 <!ELEMENT appropriations-major (header?, subheader*,(text* | %nonstructured-level-model;)*, ((subsection* | paragraph*), continuation-text*)*)>
 
 
@@ -1053,9 +1830,16 @@
             %structure-attributes;>
 
 
+
+
+
+
+
 <!ENTITY % division-model
                          "%start-of-structure;,
                         (subdivision | title )*">
+
+
 
 
 <!ELEMENT  division     (%division-model;)>
@@ -1074,6 +1858,8 @@
                          "%start-of-structure;,title*">
 
 
+
+
 <!ELEMENT  subdivision     (%subdivision-model;)>
 
 
@@ -1085,8 +1871,13 @@
             level-type  (undesignated | subsequent)     "subsequent">
 
 
+
+
+
 <!ENTITY % title-model  "%start-of-structure;,
 			(subtitle | chapter | part)*">
+
+
 
 
 <!ELEMENT  title            (%title-model;)>
@@ -1145,6 +1936,9 @@
                         "%start-of-structure;,
                         (part)*">
 
+
+
+
 <!ELEMENT  subchapter       (%subchapter-model;)>
 
 
@@ -1194,10 +1988,21 @@
             level-type  (undesignated | subsequent)     "subsequent">
 
 
+
+
+
+
+
 <!ELEMENT  text         (%text-model; | effective-date)*>
 
 <!ATTLIST text  display-inline
                 (yes-display-inline | no-display-inline)  "yes-display-inline">
+
+
+
+
+
+
 
 
 <!ELEMENT  continuation-text    (%text-model; | table)*>
@@ -1207,7 +2012,12 @@
 		continuation-text-level		(section | subsection |
 		paragraph | subparagraph | clause | subclause | item | subitem | appropriations-major | appropriations-intermediate | appropriations-small)	#IMPLIED>
 
+
+
+
 <!ELEMENT  effective-date  (%pcd-model; | %phrase-level;)*>
+
+
 
 
 <!ELEMENT  header-in-text 	(%pcd-model; | enum-in-header | committee-name | %phrase-level; | editorial)*>
@@ -1232,18 +2042,30 @@
                         rules-subparagraph | rules-subdivision |
                         rules-item | rules-subitem) "section"
 			style      (%style-attribute-values; | other) "OLC"
-         	other-style
+         		 other-style
 			(archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED >
+
+
+
+
 
 
 <!ELEMENT  legis-comment  (%text-model;)*>
 <!ATTLIST  legis-comment  display (yes | no)  #IMPLIED>
 
 
+
+
+
+
 <!ELEMENT  constitution-article	(enum, section+)	>
 
 <!ATTLIST  constitution-article
             %structure-attributes;>
+
+
+
+
 
 
 <!ELEMENT  after-quoted-block  (%pcd-model; | %revisions; | linebreak | pagebreak | inline-comment | legis-comment)* >
@@ -1257,6 +2079,10 @@
 				quoted-block-continuation-text?)?)? | (%rules-level-model;)+ |
                         (constitution-article | preamble)?), after-quoted-block?">
 
+
+
+
+
 <!ELEMENT  quoted-block  (%quoted-block-model;)>
 
 
@@ -1264,7 +2090,7 @@
 <!ATTLIST  quoted-block
 	style      (%style-attribute-values; | other) "OLC"
 	other-style
-		(archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED
+			(archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED 
 	display-inline   (yes-display-inline | no-display-inline) "no-display-inline"
 	changed (added | deleted | not-changed)     #IMPLIED
 	committee-id
@@ -1311,6 +2137,61 @@
  		bold-brackets)            #IMPLIED >
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ELEMENT  toc          ((header?, instructive-para?), ((toc-entry |
                         toc-quoted-entry)+ | (multi-column-toc-entry | multi-column-toc-quoted-entry)+))+>
 
@@ -1331,6 +2212,15 @@
  		brackets-boldface-italic | parentheses-boldface-roman | parentheses-boldface-italic |
  		bold-brackets)            #IMPLIED
 	%internal-link-attributes-if-needed;	>
+
+
+
+
+
+
+
+
+
 
 <!ELEMENT  instructive-para	(%text-model;)*	>
 
@@ -1365,7 +2255,8 @@
 <!ELEMENT  multi-column-toc-quoted-entry	(multi-column-toc-entry)+  >
 <!ATTLIST  multi-column-toc-quoted-entry  
             style      (%style-attribute-values; | other) "OLC"
-            other-style (archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED >
+            other-style
+			(archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED  >
         
 
 <!ELEMENT  toc-entry    (%pcd-model; | enum-in-header | %phrase-level;)*>
@@ -1387,7 +2278,15 @@
 <!ELEMENT  toc-quoted-entry  (toc-entry+)>
 <!ATTLIST  toc-quoted-entry  
 	    style      (%style-attribute-values; | other) "OLC"
-	    other-style (archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED >
+	    other-style
+			(archaic | hybrid | nuclear | education | railroad-retirement | traditional-inline | archaic-paragraph | codification-quoted | codification-not-quoted) #IMPLIED >
+
+
+
+
+
+
+
 
 
 <!ELEMENT  omitted-text  EMPTY>
@@ -1397,6 +2296,10 @@
 <!ATTLIST  omitted-text
              type    (horizontal |
                         vertical)  #REQUIRED>
+
+
+
+
 
 
 <!ELEMENT  section          (%section-model;)>
@@ -1409,11 +2312,28 @@
                        (subsequent-section | section-one | resolved |
                        undesignated-section | ordered)      "subsequent-section">
 
+
+
+
 <!ENTITY % person-elements  "%pcd-model; | %phrase-level;">
 
 <!ENTITY % date-attributes
             "date       CDATA  #IMPLIED
              legis-day  CDATA  #IMPLIED">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!ENTITY % yesorno 'NMTOKEN'> 
 <!ENTITY % titles  'title?'>
@@ -1427,6 +2347,13 @@
 
 <!ENTITY % definition-attributes
             "%unique-id;">
+
+
+
+
+
+
+
 
 
 <!ELEMENT  distribution-code  (%pcd-model;)*>
@@ -1465,6 +2392,9 @@
 <!ATTLIST  engrossed-amendment-form
                         display (yes | no) "yes"            >
                                       
+
+
+
 
 <!ELEMENT  amend-num      (%pcd-model; | %phrase-level;)*              >
 <!ATTLIST  amend-num
@@ -1510,6 +2440,8 @@
                         display (yes | no) "yes"                       >
 
 
+
+
 <!ELEMENT  official-title-amendment  (%pcd-model; | %phrase-level;)*>
 
 <!ATTLIST  official-title-amendment
@@ -1553,7 +2485,15 @@
 
 <!ELEMENT  title-amends   (official-title-amendment)                              >
 
+
+
 <!ELEMENT  amendment          (amendment-instruction+, amendment-block?)*         >
+
+
+
+
+
+
 
  		
  <!ELEMENT  amendment-block
@@ -1568,6 +2508,7 @@
         line-numbers	(on | off)		"on"
         %res-structure-attributes;
 	id	ID			#IMPLIED	>
+	
 	
 	
 <!ELEMENT  committee-report-segment     (enum?, committee-report-header*, text?, (amendment-list | preamble-amends | committee-report-para | %nonstructured-level-model;)*)        >	
@@ -1611,6 +2552,20 @@
 	id
 		ID			#IMPLIED	>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!ELEMENT amendment-instruction  (enum?,(text),(instruction-paragraph)*) >
 
 <!ATTLIST   amendment-instruction
@@ -1641,7 +2596,34 @@
               down2 | down3 | down4 | down5 | down6)                           #IMPLIED>
 
 
-<!ELEMENT  attestation  (attestation-group | conferees)+>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!ELEMENT  attestation  (attestation-group | conferees)+ >
 
 
 
@@ -1690,6 +2672,7 @@
 <!ELEMENT  role         (%pcd-model;)*>
 
 
+
 <!ELEMENT  consideration-paragraph (%pcd-model;)*>
 <!ELEMENT  conferees (consideration-paragraph | legislator)+>
 <!ATTLIST  conferees chamber (senate | house) #REQUIRED >
@@ -1704,7 +2687,6 @@
 		party CDATA #IMPLIED
 		role (legislator | chairman | speaker | vice-chairman | ranking-member | acting-chair | acting-vice-chair | chair | chair-emeritus | chairperson | chairwoman | co-chair | ex-officio | vice-chair | vice-chairwoman) "legislator" 
 		unaccented-name  CDATA	#IMPLIED>
-
 
 
 
@@ -1754,6 +2736,32 @@
 <!ELEMENT  whereas      (text, (paragraph | %nonstructured-level-model;)*)>
 
 <!ATTLIST whereas   %res-structure-attributes;	>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!ELEMENT  action       (action-date?, (action-desc |
                         action-instruction)*)>
@@ -1840,6 +2848,13 @@
                          (yes | no)   "yes"                      >
 
 
+
+
+
+
+
+
+
 <!ELEMENT  action-instruction  (%pcd-model;)*>
 <!ATTLIST  action-instruction
                        display
@@ -1865,22 +2880,39 @@
  		bold-brackets)            #IMPLIED      >
 
 
+
+
+
 <!ELEMENT  cosponsor    (%person-elements;)*  >
+
+
 
 <!ATTLIST  cosponsor
              name-id  CDATA  #IMPLIED   >
 
 
+
+
+
+
+
 <!ELEMENT  nonsponsor   (%person-elements;)*  >
+
+
 
 <!ATTLIST  nonsponsor
              name-id  CDATA  #IMPLIED  >
 
 
+
+
 <!ELEMENT  sponsor      (%person-elements;)*  >
+
+
 
 <!ATTLIST  sponsor
              name-id  CDATA  #IMPLIED
 	      by-request	(yes | no)	"no"  >
 
 <!ELEMENT  proviso	(%text-model;)*	>
+
